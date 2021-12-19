@@ -27,30 +27,30 @@ def compute_rating(array, target):
         target (str): Wether O2 or CO2 rating is the target. Supports "CO2" or "O2".
 
     Returns:
-        [str]: Returns binary representation of the wanted target
+        [str]: Returns binary representation of the wanted target rating
     """
     assert target in ['O2', 'CO2']
-    oxygen = array.copy()
-    for idx in range(len(oxygen[0])):
-        counter_ones = [a[idx] for a in oxygen].count('1')
-        counter_zeros = [a[idx] for a in oxygen].count('0')
+    final_array = array.copy()
+    for idx in range(len(final_array[0])):
+        counter_ones = [a[idx] for a in final_array].count('1')
+        counter_zeros = [a[idx] for a in final_array].count('0')
         
         if counter_ones >= counter_zeros:
-            o2_to_keep = 1
-            co2_to_keep = 0
+            O2_to_keep = 1
+            CO2_to_keep = 0
         else : 
-            o2_to_keep = 0
-            co2_to_keep = 1
+            O2_to_keep = 0
+            CO2_to_keep = 1
         
-        target_to_keep = o2_to_keep if target == "O2" else co2_to_keep
+        target_to_keep = O2_to_keep if target == "O2" else CO2_to_keep
         to_remove = []    
         for i,binary in enumerate(oxygen):
             if int(binary[idx]) != target_to_keep:
                 to_remove.append(binary)
         for i in to_remove:
-            if len(oxygen) > 1:
-                oxygen.remove(i)
-    return oxygen[0]
+            if len(final_array) > 1:
+                final_array.remove(i)
+    return final_array[0]
 
 if __name__ == "__main__":
     # Loading the data
