@@ -1,5 +1,3 @@
-import numpy as np
-
 def compute_gamma_epsilon(array):
     """ Computes the binary representation of gamma and epsilon"""
     final_gamma, final_epsilon = "", ""
