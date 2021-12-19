@@ -1,5 +1,3 @@
-import numpy as np
-
 def compute_horiz_depth(instructions):
     """ Computes horizontal position and depth of submarine after following instructions"""
     horiz, depth = 0,0
