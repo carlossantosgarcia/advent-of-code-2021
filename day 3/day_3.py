@@ -44,7 +44,7 @@ def compute_rating(array, target):
         
         target_to_keep = O2_to_keep if target == "O2" else CO2_to_keep
         to_remove = []    
-        for i,binary in enumerate(oxygen):
+        for i,binary in enumerate(final_array):
             if int(binary[idx]) != target_to_keep:
                 to_remove.append(binary)
         for i in to_remove:
