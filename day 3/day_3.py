@@ -6,7 +6,7 @@ def compute_gamma_epsilon(array):
     for idx in range(len(array[0])):
         ones = 0
         zeros = 0
-        for binary in input3:
+        for binary in array:
             if binary[idx] == "1":
                 ones += 1
             else:
@@ -19,49 +19,38 @@ def compute_gamma_epsilon(array):
             final_epsilon  += "1"
     return final_gamma, final_epsilon
 
-def oxygen_rating(array):
+def compute_rating(array, target):
+    """Computes O2 or CO2 rating from the diagnostic report.
+
+    Args:
+        array (ndarray): Diagnostic report given as an input
+        target (str): Wether O2 or CO2 rating is the target. Supports "CO2" or "O2".
+
+    Returns:
+        [str]: Returns binary representation of the wanted target
+    """
+    assert target in ['O2', 'CO2']
     oxygen = array.copy()
-    for idx in range(len(input3[0])):
+    for idx in range(len(oxygen[0])):
         counter_ones = [a[idx] for a in oxygen].count('1')
         counter_zeros = [a[idx] for a in oxygen].count('0')
         
         if counter_ones >= counter_zeros:
             o2_to_keep = 1
             co2_to_keep = 0
-        else counter_zeros > counter_ones:
+        else : 
             o2_to_keep = 0
             co2_to_keep = 1
         
-        to_remove_o2 = []    
+        target_to_keep = o2_to_keep if target == "O2" else co2_to_keep
+        to_remove = []    
         for i,binary in enumerate(oxygen):
-            if int(binary[idx]) != o2_to_keep:
-                to_remove_o2.append(binary)
-        for i in to_remove_o2:
+            if int(binary[idx]) != target_to_keep:
+                to_remove.append(binary)
+        for i in to_remove:
             if len(oxygen) > 1:
                 oxygen.remove(i)
     return oxygen[0]
-
-def cO2_rating(array):
-    cO2 = array.copy()
-    for idx in range(len(input3[0])):
-        counter_ones = [a[idx] for a in cO2].count('1')
-        counter_zeros = [a[idx] for a in cO2].count('0')
-        
-        if counter_ones >= counter_zeros:
-            o2_to_keep = 1
-            co2_to_keep = 0
-        else counter_zeros > counter_ones:
-            o2_to_keep = 0
-            co2_to_keep = 1
-
-        to_remove_co2 = []    
-        for j,binary in enumerate(cO2):
-            if int(binary[idx]) != co2_to_keep:
-                to_remove_co2.append(binary)
-        for i in to_remove_co2:
-            if len(cO2) > 1:
-                cO2.remove(i)
-    return cO2[0]
 
 if __name__ == "__main__":
     # Loading the data
@@ -76,9 +65,9 @@ if __name__ == "__main__":
     print(f'Input result: {int(gamma, 2)*int(epsilon, 2)}')
 
     # Task 2
-    test_O2_rating = oxygen_rating(test_data)
-    test_CO2_rating = cO2_rating(test_data)
+    test_O2_rating = compute_rating(test_data, 'O2')
+    test_CO2_rating = compute_rating(test_data, 'CO2')
     print(f'Test result: {int(test_O2_rating,2)*int(test_CO2_rating, 2)}')
-    O2_rating = oxygen_rating(input_data)
-    CO2_rating = cO2_rating(input_data)
+    O2_rating = compute_rating(input_data, 'O2')
+    CO2_rating = compute_rating(input_data, 'CO2')
     print(f'Input result: {int(O2_rating,2)*int(CO2_rating, 2)}')
