@@ -9,13 +9,14 @@ def compute_gamma_epsilon(array):
                 ones += 1
             else:
                 zeros += 1
-        if ones>zeros:
+        if ones > zeros:
             final_gamma += "1"
             final_epsilon += "0"
         else:
             final_gamma += "0"
-            final_epsilon  += "1"
+            final_epsilon += "1"
     return final_gamma, final_epsilon
+
 
 def compute_rating(array, target):
     """Computes O2 or CO2 rating from the diagnostic report.
@@ -32,17 +33,17 @@ def compute_rating(array, target):
     for idx in range(len(final_array[0])):
         counter_ones = [a[idx] for a in final_array].count('1')
         counter_zeros = [a[idx] for a in final_array].count('0')
-        
+
         if counter_ones >= counter_zeros:
             O2_to_keep = 1
             CO2_to_keep = 0
-        else : 
+        else:
             O2_to_keep = 0
             CO2_to_keep = 1
-        
+
         target_to_keep = O2_to_keep if target == "O2" else CO2_to_keep
-        to_remove = []    
-        for i,binary in enumerate(final_array):
+        to_remove = []
+        for i, binary in enumerate(final_array):
             if int(binary[idx]) != target_to_keep:
                 to_remove.append(binary)
         for i in to_remove:
@@ -50,10 +51,11 @@ def compute_rating(array, target):
                 final_array.remove(i)
     return final_array[0]
 
+
 if __name__ == "__main__":
     # Loading the data
     test_data = [line.rstrip() for line in open("test_input.txt")]
-    input_data = [line.rstrip() for line in open("input.txt")] 
+    input_data = [line.rstrip() for line in open("input.txt")]
 
     # Task 1
     # Gamma and epsilon are represented in binary

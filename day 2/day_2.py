@@ -1,6 +1,6 @@
 def compute_horiz_depth(instructions):
     """ Computes horizontal position and depth of submarine after following instructions"""
-    horiz, depth = 0,0
+    horiz, depth = 0, 0
     for command in instructions:
         direction, value = command.split(' ')
         value = int(value)
@@ -8,13 +8,14 @@ def compute_horiz_depth(instructions):
             horiz += value
         elif direction == "down":
             depth += value
-        else: 
+        else:
             depth -= value
     return horiz, depth
 
+
 def compute_horiz_depth_aim(instructions):
     """ Computes horizontal position and depth of submarine after following instructions taking aim into account"""
-    horiz, depth, aim = 0,0,0
+    horiz, depth, aim = 0, 0, 0
     for command in instructions:
         direction, value = command.split(' ')
         value = int(value)
@@ -23,7 +24,7 @@ def compute_horiz_depth_aim(instructions):
             depth += value*aim
         elif direction == "down":
             aim += value
-        else: 
+        else:
             aim -= value
     return horiz, depth
 
@@ -31,7 +32,7 @@ def compute_horiz_depth_aim(instructions):
 if __name__ == "__main__":
     # Loading the data
     test_data = [line.rstrip() for line in open("test_input.txt")]
-    input_data = [line.rstrip() for line in open("input.txt")] 
+    input_data = [line.rstrip() for line in open("input.txt")]
 
     # Task 1
     test_horiz, test_depth = compute_horiz_depth(test_data)

@@ -1,5 +1,6 @@
 import numpy as np
 
+
 def count_nb_increases(array):
     """Counts the number of increasing values in array"""
     counter = 0
@@ -7,8 +8,10 @@ def count_nb_increases(array):
         counter += int(array[i] > array[i-1])
     return counter
 
+
 def count_increases_sliding_window(array):
-    slided_array = [array[i]+array[i+1]+array[i+2] for i in range(0,len(array)-2)]
+    slided_array = [array[i]+array[i+1]+array[i+2]
+                    for i in range(0, len(array)-2)]
     return count_nb_increases(slided_array)
 
 
