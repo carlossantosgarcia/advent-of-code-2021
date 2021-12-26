@@ -58,13 +58,16 @@ if __name__ == "__main__":
     input_data = [line.rstrip() for line in open("input.txt")]
 
     # Task 1
+    print('### TASK 1 ###')
     # Gamma and epsilon are represented in binary
     test_gamma, test_epsilon = compute_gamma_epsilon(test_data)
     print(f'Test result: {int(test_gamma, 2)*int(test_epsilon, 2)}')
     gamma, epsilon = compute_gamma_epsilon(input_data)
     print(f'Input result: {int(gamma, 2)*int(epsilon, 2)}')
+    print("\n")
 
     # Task 2
+    print('### TASK 2 ###')
     test_O2_rating = compute_rating(test_data, 'O2')
     test_CO2_rating = compute_rating(test_data, 'CO2')
     print(f'Test result: {int(test_O2_rating,2)*int(test_CO2_rating, 2)}')

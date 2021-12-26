@@ -21,9 +21,12 @@ if __name__ == "__main__":
     input_data = np.loadtxt("input.txt")
 
     # Task 1
+    print('### TASK 1 ###')
     print(f'Test result: {count_nb_increases(test_data)}')
     print(f'Input result: {count_nb_increases(input_data)}')
+    print('\n')
 
     # Task 2
+    print('### TASK 2 ###')
     print(f'Test result: {count_increases_sliding_window(test_data)}')
     print(f'Input result: {count_increases_sliding_window(input_data)}')

@@ -151,12 +151,15 @@ if __name__ == "__main__":
     order, grids, nb_grids = read_input_puzzle("input.txt")
 
     # Task 1
+    print('### TASK 1 ###')
     print(
         f'Test result: {compute_unmarked_sum(*find_winner_grid(test_order, test_grids, test_nb_grids))}')
     print(
         f'Input result: {compute_unmarked_sum(*find_winner_grid(order, grids, nb_grids))}')
+    print('\n')
 
     # Task 2
+    print('### TASK 2 ###')
     print(
         f'Test result: {compute_unmarked_sum(*find_last_winner_grid(test_order, test_grids, test_nb_grids))}')
     print(

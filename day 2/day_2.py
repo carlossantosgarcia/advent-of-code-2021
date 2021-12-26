@@ -35,12 +35,15 @@ if __name__ == "__main__":
     input_data = [line.rstrip() for line in open("input.txt")]
 
     # Task 1
+    print('### TASK 1 ###')
     test_horiz, test_depth = compute_horiz_depth(test_data)
     print(f'Test result: {test_horiz*test_depth}')
     horiz, depth = compute_horiz_depth(input_data)
     print(f'Input result: {horiz*depth}')
+    print('\n')
 
     # Task 2
+    print('### TASK 2 ###')
     test_horiz, test_depth = compute_horiz_depth_aim(test_data)
     print(f'Test result: {test_horiz*test_depth}')
     horiz, depth = compute_horiz_depth_aim(input_data)
